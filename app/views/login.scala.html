@@ -1,0 +1,22 @@
+@(formLogin: Form[controllers.Application.Login])
+@import helper._
+@import helper.twitterBootstrap._
+@main("Login") {
+<h1>Cadastro de Cliente</h1>
+@form(action = routes.Application.autenticar()) {
+<fieldset>
+    <legend>Login</legend>
+    @inputText(
+    formLogin("email")
+    )
+    @inputPassword(
+    formLogin("password")
+    )
+    <div class="actions">
+        <input type="submit" class="btn primary"
+               value="Logar !" />
+    </div>
+</fieldset>
+
+}
+}

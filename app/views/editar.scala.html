@@ -1,0 +1,29 @@
+@(formCliente: Form[Cliente])
+@import helper._
+@import helper.twitterBootstrap._
+@main("Cliente") {
+<h1>Cadastro de Cliente</h1>
+@form(action = routes.Application.cadastrar()) {
+<fieldset>
+    <legend>Cliente</legend>
+    @inputText(
+    formCliente("nome"),
+    '_label -> "Nome do Cliente",
+    'placeholder -> "Your name"
+    )
+    @inputText(
+    formCliente("email"),
+    '_showConstraints -> false,
+    '_error -> formCliente("email").error.map(_.withMessage("O seu e-mail"))
+    )
+    @textarea(formCliente("cpf"), '_text -> "O seu CPF",
+    '_error -> formCliente("cpf").error.map(_.withMessage("CPF no formato 000.000.000-00"))
+    )
+
+    <div class="actions">
+        <input type="submit" class="btn primary" value="Sign Up !" />
+    </div>
+</fieldset>
+
+}
+}
